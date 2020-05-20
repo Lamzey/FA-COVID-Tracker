@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>FA-COVID Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container">
+
+   <div align="center">
+       <nav class="navbar navbar-dark bg-dark">
+           <a class="navbar-brand"><h3>Facilitar's COVID-19 Tracker</h3></a>
+           <!--<form class="form-inline">
+               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+           </form>-->
+       </nav>
+   </div>
+    <br>
+
+<div class="jumbotron">
+    <p class="lead">Total Cases Reported.</p>
+    <h3 class="display-4" th:text="${totalReportedCases}"></h3>
+    <hr class="my-4">
+    <p class="lead"><span>Latest Cases Reported </span></p>
+    <h3 class="display-4" th:text="${totalNewCases}"></h3>
+</div>
+
+    <table class="table">
+        <tr>
+            <th>Country</th>
+            <th>Province</th>
+            <th>Total Cases Recorded</th>
+            <th>Recent Cases</th>
+        </tr>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.latestTotalCases}">0</td>
+            <td th:text="${locationStat.diffFromPrevDay}">0</td>
+        </tr>
+    </table>
+
+</div>
+<div align="center">
+    <p>
+        <footer>&copy; 2020 <b>Facilitar LLC</b></footer>
+    </p>
+</div>
+
+
+</body>
+
+</html>
